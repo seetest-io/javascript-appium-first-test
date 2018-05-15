@@ -17,120 +17,23 @@ function main() {
 
   var server = "https://cloud.seetest.io/wd/hub";
 
-  var driver = wd.promiseRemote(server);
+  var driver = wd.promiseChainRemote(server, 443, desiredCaps);
 
   driver
     .init(desiredCaps)
-    .then(function() {
-      return driver.waitForElementById(
-        "usernameTextField",
-        asserters.isDisplayed && asserters.isEnabled,
-        30000
-      );
-    })
-    .then(function(element) {
-      return element.sendKeys("company");
-    })
-    .then(function() {
-      return driver.waitForElementById(
-        "passwordTextField",
-        asserters.isDisplayed && asserters.isEnabled,
-        30000
-      );
-    })
-    .then(function(element) {
-      return element.sendKeys("company");
-    })
-    .then(function() {
-        return driver.waitForElementById(
-          "loginButton",
-          asserters.isDisplayed && asserters.isEnabled,
-          30000
-        );
-      })
-      .then(function(element) {
-        return element.click();
-      })
-      .then(function() {
-        return driver.waitForElementById(
-          "makePaymentButton",
-          asserters.isDisplayed && asserters.isEnabled,
-          30000
-        );
-      })
-      .then(function(element) {
-        return element.click();
-      })
-      .then(function() {
-        return driver.waitForElementById(
-          "phoneTextField",
-          asserters.isDisplayed && asserters.isEnabled,
-          30000
-        );
-      })
-      .then(function(element) {
-        return element.sendKeys("123456");
-      })
-      .then(function() {
-        return driver.waitForElementById(
-          "nameTextField",
-          asserters.isDisplayed && asserters.isEnabled,
-          30000
-        );
-      })
-      .then(function(element) {
-        return element.sendKeys("Test");
-      })
-      .then(function() {
-        return driver.waitForElementById(
-          "amountTextField",
-          asserters.isDisplayed && asserters.isEnabled,
-          30000
-        );
-      })
-      .then(function(element) {
-        return element.sendKeys("10");
-      })
-      .then(function() {
-        return driver.waitForElementById(
-          "countryTextField",
-          asserters.isDisplayed && asserters.isEnabled,
-          30000
-        );
-      })
-      .then(function(element) {
-        return element.sendKeys("US");
-      })
-      .then(function() {
-        return driver.waitForElementById(
-          "sendPaymentButton",
-          asserters.isDisplayed && asserters.isEnabled,
-          30000
-        );
-      })
-      .then(function(element) {
-        return element.click();
-      })
-      .then(function() {
-        return driver.waitForElementById(
-          "button1",
-          asserters.isDisplayed && asserters.isEnabled,
-          30000
-        );
-      })
-      .then(function(element) {
-        return element.click();
-      })
-      .then(function() {
-        return driver.waitForElementById(
-          "logoutButton",
-          asserters.isDisplayed && asserters.isEnabled,
-          30000
-        );
-      })
-      .then(function(element) {
-        return element.click();
-      })
+
+        .elementById("usernameTextField").sendKeys("company")
+        .elementById("passwordTextField").sendKeys("company")
+        .elementById("loginButton").click()
+        .elementById("makePaymentButton").click()
+        .elementById("phoneTextField").sendKeys("123456")
+        .elementById("nameTextField").sendKeys("Test")
+        .elementById("amountTextField").sendKeys("10")
+        .elementById("countryTextField").sendKeys("US")
+        .elementById("sendPaymentButton").click()
+        .elementById("button1").click()
+        .elementById("logoutButton").click()
+    
     .fin(function() {
       return driver.quit();
     })

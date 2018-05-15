@@ -20,38 +20,14 @@ function main() {
   browser
     .init(desiredCaps)
     .get("https://amazon.com")
-    .then(function() {
-      return browser.waitForElementById(
-        "nav-search-keywords",
-        asserters.isDisplayed && asserters.isEnabled,
-        30000
-      );
-    })
-    .then(function(element) {
-      return element.sendKeys("iPhone");
-    })
-    .then(function() {
-      return browser.elementByXPath(
-        "(//*[@class='nav-input'])[1]",
-        asserters.isDisplayed && asserters.isEnabled,
-        30000
-      );
-    })
-    .then(function(element) {
-      return element.click();
-    })
-    .then(function() {
-      return browser.elementByXPath(
-        "(//*[@class='sx-table-row'])[1]",
-        asserters.isDisplayed && asserters.isEnabled,
-        30000
-      );
-    })
+    .elementByXPath("//*[@name='k']").sendKeys("iPhone")
+    .elementByXPath("(//*[@class='nav-input'])[1]").click()
+    .elementByXPath("(//*[@class='sx-table-row'])[1]")
     .then(function(){
-      return browser.title()
+      return browser.title();
     })
     .then(function(title){
-      console.log(title);
+      console.log("The title of the page is: ", title);
     })
     .fin(function() {
       return browser.quit();
