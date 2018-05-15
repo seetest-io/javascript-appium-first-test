@@ -1,0 +1,15 @@
+{
+  "name": "appiumnode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tests": "node android-app-test.js && node android-web-test.js && node ios-app-test.js && node ios-web-test.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "wd": "^1.6.2"
+  }
+}
