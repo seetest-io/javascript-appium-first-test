@@ -10,9 +10,9 @@ You can use these tests as templates for your own tests. Simply edit the capabil
 
 # Running the tests
 
-Before you run the tests, run the command npm install to get the web driver dependecies.
+Before you run the tests, run the command ```npm install``` to get the web driver dependecies.
 
 ## Running the tests from your machine
-You can clone the repository to your machine and open it in your IDE of choice. To run the tests, run the command node <NAME_OF_TEST_FILE> in the command line / shell. To run all the tests, run the command npm run tests.
+You can clone the repository to your machine and open it in your IDE of choice. To run the tests, run the command ```node <NAME_OF_TEST_FILE>``` in the command line / shell. To run all the tests, run the command ```npm run tests```.
 
 
